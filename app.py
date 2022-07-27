@@ -1,13 +1,22 @@
 # Flask utils
-from flask import Flask, redirect, url_for, request, render_template, Response
+from flask import Flask, redirect, url_for, request, render_template, Response, make_response, send_from_directory
 from werkzeug.utils import secure_filename
 # from gevent.pywsgi import WSGIServer
 from camera import ObjectDetection
 
 app = Flask(__name__)
+
 @app.route("/")
 def main():
     return render_template("index.html")
+
+@app.route('/sw.js')
+def sw():
+    response=make_response(
+                     send_from_directory('static',path='serviceworker.js'))
+    #change the content header file. Can also omit; flask will handle correctly.
+    response.headers['Content-Type'] = 'application/javascript'
+    return response
 
 def gen(camera):
     while True:
