@@ -1,7 +1,7 @@
 {
   "name": "Blind Assistant",
   "short_name": "Blind Assistant",
-  "description": "An ML based app to help blind people.",
+  "description": "An ML based application to assist blind people through object & distance detection and voice assistant.",
   "theme_color": "black",
   "background_color": "black",
   "display": "standalone",
