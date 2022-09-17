@@ -3,14 +3,15 @@ import os
 import time
 import math
 import numpy as np
+import win32com.client
 
 import itertools
 import struct  # get_image_size
 import imghdr  # get_image_size
 
 import win32com.client as wincl       #### Python's Text-to-speech (tts) engine for windows, multiprocessing
-speak = wincl.Dispatch("SAPI.SpVoice")    #### This initiates the tts engine
-
+# speak = wincl.Dispatch("SAPI.SpVoice")    #### This initiates the tts engine
+speaker = win32com.client.Dispatch("SAPI.SpVoice")
 
 def sigmoid(x):
     return 1.0 / (np.exp(-x) + 1.)
@@ -141,7 +142,9 @@ def plot_boxes_cv2(img, boxes, savename=None, class_names=None, color=None, colo
             
             distance = (2 * 3.14 * 180) / (w+ h * 360) * 1000 + 3 ### Distance measuring in Inch 
             feedback = ("{}".format(class_names[cls_id])+ " " +"is"+" at {} ".format(round(distance))+"Inches")
-            # speak.Speak(feedback)
+            
+            speaker.Speak(feedback)
+
             print(feedback)
             text_str = '%s' % (class_names[cls_id])
             text_w, text_h = cv2.getTextSize(text_str, font_face, font_scale, font_thickness)[0]
