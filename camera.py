@@ -54,8 +54,9 @@ def prep_image(img, inp_dim):
 
 class ObjectDetection:
     def __init__(self, id): 
-        # self.cap = cv2.VideoCapture(id)
-        self.cap = WebcamVideoStream(src = id).start()
+        url = 'http://172.16.8.240:8080/video'
+        self.cap = cv2.VideoCapture(url)
+        # self.cap = WebcamVideoStream(src = id).start()
         self.cfgfile = "cfg/yolov4.cfg"
         self.weightsfile = "yolov4.weights"
         self.confidence = float(0.6)
@@ -79,8 +80,8 @@ class ObjectDetection:
         q = queue.Queue()
         while True:
             def frame_render(queue_from_cam):
-                frame = self.cap.read() # If you capture stream using opencv (cv2.VideoCapture()) the use the following line
-                # ret, frame = self.cap.read()
+                # frame = self.cap.read() # If you capture stream using opencv (cv2.VideoCapture()) the use the following line
+                ret, frame = self.cap.read()
                 frame = cv2.resize(frame,(self.width, self.height))
                 queue_from_cam.put(frame)
             cam = threading.Thread(target=frame_render, args=(q,))
