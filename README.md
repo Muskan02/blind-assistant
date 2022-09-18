@@ -3,7 +3,7 @@
 to create virtual environment :
 1. ```pip install virtualenvwrapper-win```
 2. ```mkvirtualenv <name>```
-3. ```Workon <name>```
+3. ```workon <name>```
 
 to run:
 1. ```pip install -r requirements.txt```
