@@ -1,5 +1,10 @@
 # blind-assistant
 
+to create virtual environment :
+1. ```pip install virtualenvwrapper-win```
+2. ```mkvirtualenv <name>```
+3. ```Workon <name>```
+
 to run:
 1. ```pip install -r requirements.txt```
 2. for installing torch_nightly: ```pip install "torch==1.8.*" --use-feature=2020-resolver --pre --extra-index-url https://download.pytorch.org/whl/nightly/cu102/torch_nightly.html```
