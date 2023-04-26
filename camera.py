@@ -54,7 +54,7 @@ def prep_image(img, inp_dim):
 
 class ObjectDetection:
     def __init__(self, id): 
-        url = 'http://172.16.8.240:8080/video'
+        url = 'http://172.16.9.141:8080/video'
         self.cap = cv2.VideoCapture(url)
         # self.cap = WebcamVideoStream(src = id).start()
         self.cfgfile = "cfg/yolov4.cfg"
